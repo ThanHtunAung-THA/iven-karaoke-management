@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Create your models here.
+
 # Room Model
 class Room(models.Model):
     name = models.CharField(max_length=50)
