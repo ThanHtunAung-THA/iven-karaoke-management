@@ -1,0 +1,30 @@
+<h1>Room List</h1>
+<ul>
+    {% for room in rooms %}
+    <li>
+        {{ room.name }} - {{ room.room_type }} - ${{ room.price_per_hour }}/hour
+        {% if room.is_available %}
+        <button onclick="bookRoom(`{{ room.id }}`)">Book Now</button>
+        {% else %}
+        <span>Not Available</span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+<script>
+function bookRoom(roomId) {
+    fetch(`/book-room/${roomId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: JSON.stringify({
+            start_time: '2024-12-19T10:00:00',
+            end_time: '2024-12-19T12:00:00'
+        }),
+    }).then(response => response.json())
+      .then(data => alert('Booking successful! ID: ' + data.booking_id));
+}
+</script>

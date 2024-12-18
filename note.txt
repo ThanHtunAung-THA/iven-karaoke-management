@@ -1,0 +1,69 @@
+#working steps note for iven-karaoke
+
+//downloading venv lib
+$ python -m venv #django_venv_files
+
+//activating venv command
+.\#django_venv_files\Script\activate
+
+//installing djano 4.2
+pip install django==4.2
+
+//check packages of django 4.2
+pip list
+
+//create iven-karaoke project main file
+django-admin startproject iven_karaoke
+
+//go in
+cd iven_karaoke
+
+//testing server
+python manage.py runserver
+
+//create ktv app
+python manage.py startapp ktv
+
+//====================================================\\
+
+//goto --> iven_karaoke/settings.py ,,, add ktv in installed apps list.
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'ktv',
+]
+
+//====================================================\\
+
+//creating tables migration files
+python manage.py makemigrations
+
+//applying migration files
+python manage.py migrate
+
+//====================================================\\
+
+//goto --> ktv/admin.py ,,, registering for admin in all tables
+
+//goto --> ktv/views.py ,,, creating views for tables
+
+//create --> templates/ktv ,,, creating html-templates under ktv
+
+//create --> ktv/urls.py ,,, declaring url paths
+
+//goto --> iven_karaoke/urls.py ,,, declaring ktv.urls paths
+
+
+//====================================================\\
+
+//testing
+python manage.py runserver
+
+
+
+

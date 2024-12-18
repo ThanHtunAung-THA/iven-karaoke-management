@@ -1,0 +1,8 @@
+<h1>Song List</h1>
+<ul>
+    {% for song in songs %}
+    <li>
+        {{ song.title }} - {{ song.artist }} - {{ song.genre }} ({{ song.duration }})
+    </li>
+    {% endfor %}
+</ul>
